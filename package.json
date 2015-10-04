@@ -1,0 +1,19 @@
+{
+  "name": "GOPNIK",
+  "version": "0.0.1",
+  "description": "GOPNIK.EXE",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xpl/gop.git"
+  },
+  "author": "Vitaly Gordon <rocket.mind@gmail.com> (http://github.com/xpl)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xpl/gop/issues"
+  },
+  "homepage": "https://github.com/xpl/gop#readme",
+  "dependencies": {
+    "useless": ">= 0.0.46"
+  }
+}
