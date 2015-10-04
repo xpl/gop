@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru-ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ГОПНИК.EXE</title>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <style>
+
+    @font-face {
+        font-family: 'DOS';
+        src: url('dos_system_font.eot');
+        src: url('dos_system_font.eot?#iefix') format('embedded-opentype'),
+        url('dos_system_font.woff2') format('woff2'),
+        url('dos_system_font.woff') format('woff'),
+        url('dos_system_font.ttf') format('truetype'),
+        url('dos_system_font.svg#dos_system_fontregular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @keyframes appear {
+        0%    { transform: scale(0.9); opacity: 0; }
+        100%  { transform: scale(1); opacity: 1; } }
+
+    @-webkit-keyframes appear {
+        0%    { -webkit-transform: scale(0.9); opacity: 0; }
+        100%  { -webkit-transform: scale(1); opacity: 1; } }
+
+    @keyframes notice {
+        0%    { transform: scale(0.9); opacity: 0; }
+        50%   { transform: scale(1);   opacity: 1; }
+        100%  { transform: scale(1.1); opacity: 0; } }
+
+    @-webkit-keyframes notice {
+        0%    { -webkit-transform: scale(0.9); opacity: 0; }
+        50%   { -webkit-transform: scale(1);   opacity: 1; }
+        100%  { -webkit-transform: scale(1.1); opacity: 0; } }
+
+    *:not(input) { -webkit-animation-fill-mode: forwards; animation-fill-mode: forwards;
+        cursor: default; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+
+    input { outline: none; }
+
+    html, body { position: absolute; top: 0; bottom: 0; right: 0; left: 0; padding: 0; margin: 0; }
+    body { box-sizing: border-box; overflow: hidden; background: black; color: white; font-family: DOS, sans-serif; }
+
+    .center { position: absolute; left: 0; top: 0; right: 0; bottom: 0; text-align: center; }
+    .center { display: -ms-flexbox; display: -moz-flex; display: -webkit-flex; display: flex;
+              -ms-flex-direction: column; -moz-flex-direction: column; -webkit-flex-direction: column; flex-direction: column;
+              -ms-align-items: center; -moz-align-items: center; -webkit-align-items: center; align-items: center;
+              -ms-flex-pack: center; -ms-align-content: center; -moz-align-content: center; -webkit-align-content: center; align-content: center;
+              -ms-justify-content: center; -moz-justify-content: center; -webkit-justify-content: center; justify-content: center; }
+
+    .appear { /*pointer-events: none;*/
+              -webkit-animation: appear 1s ease-out; animation: appear 1s ease-out;  }
+
+    .disappear { /*pointer-events: none;*/
+                 -webkit-animation: appear 1s ease-in; animation: appear 1s ease-in;
+                 -webkit-animation-direction: reverse; animation-direction: reverse; }
+
+    a { cursor: pointer; color: white; text-decoration: none; }
+    a * { pointer-events: none; }
+
+    .emscripten { padding-right: 0; margin-left: auto; margin-right: auto; display: block; }
+    div.emscripten { text-align: center; }      
+    div.emscripten_border { border: 1px solid black; }
+    /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
+    canvas.emscripten { border: 0px none; }
+
+    .fullscreen { position: absolute; top: 0; right: 0; margin: 25px; font-size: 25px; opacity: 0.5; }
+
+                     .btn       { transition: all 0.1s ease-in-out; -webkit-transform: scale(1); transform: scale(1); }
+                     .btn.pressed,
+    html:not(.touch) .btn:hover { opacity: 1 !important; -webkit-transform: scale(1.1); transform: scale(1.1); }
+                     .btn.wait  { pointer-events: none; }
+
+    .notice        { font-size: 60px; color: rgba(255,255,255,0.5); }
+    .notice.active { -webkit-animation: notice 5s linear; animation: notice 5s linear; }
+
+    ::-webkit-input-placeholder { color: white; opacity: 0.25; }
+    ::-moz-placeholder { color: white; opacity: 0.25; }
+    :-ms-input-placeholder { color: white; opacity: 0.25; }
+    input:-moz-placeholder { color: white; opacity: 0.25; }
+
+    #canvas { position: absolute; left: 50%; top: 50%; margin-left: -320px; margin-top: -200px; }
+
+    </style>
+
+    <!-- libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+
+    <!-- UselessJS, see http://github.com/xpl/useless -->
+    <script src="useless.micro.min.js"></script>
+    <script src="useless.devtools.min.js"></script>
+
+    <!-- main code -->
+    <script src="main.js"></script>
+</head>
+
+    <body>
+        <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+        <div id="status" class="notice center">Downloading...</div>
+
+        <a class="btn fullscreen" href="javascript:{}" onclick="document.getElementById('canvas').webkitRequestFullscreen()"><i class="fa fa-expand"></i></a>
+    </body>
+</html>
