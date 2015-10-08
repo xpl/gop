@@ -70,13 +70,9 @@
     a { cursor: pointer; color: white; text-decoration: none; }
     a * { pointer-events: none; }
 
-    .emscripten { padding-right: 0; margin-left: auto; margin-right: auto; display: block; }
-    div.emscripten { text-align: center; }      
-    div.emscripten_border { border: 1px solid black; }
-    /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
-    canvas.emscripten { border: 0px none; }
-
-    .fullscreen { position: absolute; top: 0; right: 0; margin: 25px; font-size: 25px; opacity: 0.5; }
+    a.btn       { position: absolute; margin: 25px; font-size: 25px; opacity: 0.25; }
+    .fullscreen { top: 0; right: 0; }
+    .info       { bottom: 0; right: 0; opacity: 0.15; }
 
                      .btn       { transition: all 0.1s ease-in-out; -webkit-transform: scale(1); transform: scale(1); }
                      .btn.pressed,
@@ -105,6 +101,15 @@
 
     <!-- main code -->
     <script src="main.js"></script>
+
+    <!-- info btn -->
+    <script>
+        $(document).ready (function () {
+            $('a.info').click (function () {
+                Panic ('dsds')
+            })
+        })
+    </script>
 </head>
 
     <body>
@@ -112,6 +117,16 @@
 
         <div id="status" class="notice center">Downloading...</div>
 
+<!--
+        <div id="info" class="notice center">
+            <h1 style="text-decoration: underline;">About</h1>
+
+
+ 
+        </div>-->
+
         <a class="btn fullscreen" href="javascript:{}" onclick="document.getElementById('canvas').webkitRequestFullscreen()"><i class="fa fa-expand"></i></a>
+
+        <a class="btn info" href="javascript:{}"><i class="fa fa-info"></i></a>
     </body>
 </html>

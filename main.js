@@ -110,6 +110,9 @@ $(document).ready (function () {
         var xhr = Module['memoryInitializerRequest'] = new XMLHttpRequest();
         xhr.open('GET', memoryInitializer, true);
         xhr.responseType = 'arraybuffer';
+        xhr.onprogress = function(event) {
+            Module.setStatus('Downloading... ' + Math.floor ((event.loaded / event.total) * 100) + '%')
+        }
         xhr.send(null);
     })();
 
